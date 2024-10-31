@@ -258,7 +258,7 @@ Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
 +		gpio_wdt_device.first_interval = gpio_wdt_device.interval;
 +	}
 +
-+	ret = gpio_request(gpio_wdt_device.gpio, "gpio-wdt");
++	ret = devm_gpio_request(&pdev->dev, gpio_wdt_device.gpio, "gpio-wdt");
 +	if (ret < 0) {
 +		dev_err(&pdev->dev, "failed to request gpio");
 +		return ret;
@@ -285,7 +285,6 @@ Signed-off-by: Mathias Adam <m.adam--openwrt@adamis.de>
 +		wait_for_completion(&gpio_wdt_device.stop);
 +	}
 +
-+	gpio_free(gpio_wdt_device.gpio);
 +	misc_deregister(&gpio_wdt_misc);
 +	return 0;
 +}
