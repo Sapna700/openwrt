@@ -465,7 +465,7 @@ static struct dma_async_tx_descriptor *mtk_hsdma_prep_dma_memcpy(
 	if (len <= 0)
 		return NULL;
 
-	desc = kzalloc(sizeof(*desc), GFP_ATOMIC);
+	desc = kzalloc(sizeof(*desc) + 1, GFP_ATOMIC);
 	if (!desc) {
 		dev_err(c->device->dev, "alloc memcpy decs error\n");
 		return NULL;
@@ -660,7 +660,7 @@ static int mtk_hsdma_probe(struct platform_device *pdev)
 	if (!match)
 		return -EINVAL;
 
-	hsdma = devm_kzalloc(&pdev->dev, sizeof(*hsdma), GFP_KERNEL);
+	hsdma = devm_kzalloc(&pdev->dev, sizeof(*hsdma) + 1, GFP_KERNEL);
 	if (!hsdma)
 		return -EINVAL;
 
