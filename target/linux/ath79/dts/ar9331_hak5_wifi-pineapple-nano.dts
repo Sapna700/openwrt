@@ -131,6 +131,8 @@
 
 &usb_phy {
 	status = "okay";
+
+	phy-supply = <&reg_power_usb>;
 };
 
 &wmac {
