@@ -103,6 +103,10 @@
 	};
 };
 
+&usbphy {
+	phy-supply = <&reg_usb_power>;
+};
+
 &state_default {
 	gpio {
 		groups = "spi", "i2c", "jtag", "rgmii", "mdio", "uartf";
